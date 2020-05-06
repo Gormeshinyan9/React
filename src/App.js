@@ -1,26 +1,48 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import Input from '@material-ui/core/Input';
+import './App.css'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class Main extends Component {
+    constructor(props){
+        super(props)
+        this.state = {
+         backgroundColor: '',
+         color: ''
+        }
+        localStorage.setItem('key','value')
+    }
+
+    colorchange  =(e) => {
+        this.setState({
+            color:e.target.value,
+        })
+    }
+
+    bgchange  =(e) => {
+        this.setState({
+            backgroundColor:e.target.value,
+        })
+    } 
+    
+    render() {
+        return(
+            <>
+            <div></div>
+                <div className="div">
+                    <input placeholder="Change Text Color"  onChange={this.colorchange}/>
+                    <input placeholder="Change BG Color" onChange={this.bgchange} />
+                </div>
+                <span className="span" style={{
+                    color:this.state.color,
+                    backgroundColor:this.state.backgroundColor
+                }} >
+                    HELLO WORLD!...
+                </span>
+            </>
+            
+        )
+    }
+    
 }
 
-export default App;
+export default Main
